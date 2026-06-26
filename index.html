@@ -371,7 +371,235 @@ nav{
 .btn{
     animation:pulse 2s infinite;
 }
+/* ==========================================
+   PROFESSIONAL IT PORTFOLIO ANIMATIONS
+========================================== */
 
+/* Scroll Progress Bar */
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:4px;
+    background:#38bdf8;
+    z-index:99999;
+}
+
+/* Background Particles */
+
+.particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.particles span{
+    position:absolute;
+    display:block;
+    width:6px;
+    height:6px;
+    background:#38bdf8;
+    border-radius:50%;
+    opacity:.2;
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-100vh);
+    }
+}
+
+/* Navbar */
+
+nav{
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    animation:navDrop .8s ease;
+}
+
+@keyframes navDrop{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Logo Animation */
+
+.logo{
+    background:linear-gradient(
+        90deg,
+        #38bdf8,
+        #60a5fa,
+        #38bdf8
+    );
+    background-size:200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:logoMove 4s linear infinite;
+}
+
+@keyframes logoMove{
+    100%{
+        background-position:200%;
+    }
+}
+
+/* Hero Section */
+
+.hero-content h1{
+    opacity:0;
+    animation:fadeUp .8s ease forwards;
+}
+
+.hero-content h3{
+    opacity:0;
+    animation:fadeUp .8s ease .3s forwards;
+}
+
+.hero-content p{
+    opacity:0;
+    animation:fadeUp .8s ease .6s forwards;
+}
+
+.hero-content .btn{
+    opacity:0;
+    animation:fadeUp .8s ease .9s forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Cards */
+
+.skill,
+.project-card,
+.education-card{
+    background:rgba(30,41,59,.8);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.05);
+    transition:.4s ease;
+}
+
+.skill:hover,
+.project-card:hover,
+.education-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+/* Shine Effect */
+
+.project-card::before,
+.skill::before,
+.education-card::before{
+    content:'';
+    position:absolute;
+    top:-100%;
+    left:-100%;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+    transform:rotate(35deg);
+    transition:.7s;
+}
+
+.project-card:hover::before,
+.skill:hover::before,
+.education-card:hover::before{
+    left:100%;
+}
+
+/* Project Images */
+
+.project-card img{
+    transition:.5s ease;
+}
+
+.project-card:hover img{
+    transform:scale(1.08);
+}
+
+/* Reveal Animation */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Floating Circles */
+
+.circle1{
+    animation:float1 7s infinite ease-in-out;
+}
+
+.circle2{
+    animation:float2 6s infinite ease-in-out;
+}
+
+@keyframes float1{
+    50%{
+        transform:translateY(-25px);
+    }
+}
+
+@keyframes float2{
+    50%{
+        transform:translateY(20px);
+    }
+}
+
+/* Button */
+
+.btn{
+    transition:.3s ease;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(56,189,248,.5);
+}
+
+/* Contact Icons Hover */
+
+.contact p{
+    transition:.3s;
+}
+
+.contact p:hover{
+    color:#38bdf8;
+    transform:translateX(10px);
+}
 @keyframes pulse{
     0%{
         box-shadow:0 0 0 0 rgba(56,189,248,.7);
@@ -492,8 +720,11 @@ nav{
     </ul>
 </nav>
 
-<div class="circle circle1"></div>
-<div class="circle circle2"></div>
+<body>
+
+<div id="progress-bar"></div>
+
+<div class="particles"></div>
 
 <section class="hero" id="about">
     <div class="hero-content">
@@ -707,40 +938,96 @@ nav{
 </footer>
 <script>
 
-// Scroll Reveal Animation
+/* Scroll Progress */
 
-const sections = document.querySelectorAll(
-'.education-card,.skill,.project-card,.title,.contact'
+window.addEventListener('scroll',()=>{
+
+const winScroll =
+document.documentElement.scrollTop;
+
+const height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+const scrolled =
+(winScroll/height)*100;
+
+document.getElementById('progress-bar')
+.style.width = scrolled + "%";
+
+});
+
+
+/* Reveal Sections */
+
+const reveals = document.querySelectorAll(
+'.title,.skill,.project-card,.education-card,.contact'
 );
 
 const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
-    });
-},{
-    threshold:0.15
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('active');
+
+}
+
 });
 
-sections.forEach(sec=>{
-    sec.classList.add('fade-section');
-    observer.observe(sec);
+},{threshold:0.1});
+
+reveals.forEach(el=>{
+
+el.classList.add('reveal');
+
+observer.observe(el);
+
 });
 
 
-// Parallax Floating Circles
+/* Particle Background */
 
-window.addEventListener('mousemove',(e)=>{
+const particles =
+document.querySelector('.particles');
 
-    let x = e.clientX / window.innerWidth;
-    let y = e.clientY / window.innerHeight;
+for(let i=0;i<40;i++){
 
-    document.querySelector('.circle1').style.transform =
-    `translate(${x*30}px,${y*30}px)`;
+let p = document.createElement('span');
 
-    document.querySelector('.circle2').style.transform =
-    `translate(${-x*25}px,${-y*25}px)`;
+p.style.left =
+Math.random()*100 + "%";
+
+p.style.animationDuration =
+(8 + Math.random()*12) + "s";
+
+p.style.width =
+(4 + Math.random()*5) + "px";
+
+p.style.height =
+p.style.width;
+
+particles.appendChild(p);
+
+}
+
+
+/* Mouse Parallax */
+
+document.addEventListener('mousemove',(e)=>{
+
+const x = e.clientX/window.innerWidth;
+const y = e.clientY/window.innerHeight;
+
+document.querySelector('.circle1')
+.style.transform =
+`translate(${x*20}px,${y*20}px)`;
+
+document.querySelector('.circle2')
+.style.transform =
+`translate(${-x*20}px,${-y*20}px)`;
+
 });
 
 </script>
