@@ -320,7 +320,11 @@ footer{
 nav{
     animation:navDrop 1s ease;
 }
-
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
 /* Glowing Cards */
 
 .skill,
@@ -705,14 +709,218 @@ nav{
         display:none;
     }
 }
+/* =====================================
+   MOBILE RESPONSIVE DESIGN
+===================================== */
+
+@media screen and (max-width: 768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* Navbar */
+
+   nav {
+        display: flex;
+        justify-content: space-between; /* Pushes logo left, toggle right */
+        align-items: center;            /* Perfectly centers them vertically */
+        padding: 15px 5%;
+        position: relative;             /* Keeps the absolute menu relative to this bar */
+    }
+
+    nav ul{
+        display:flex !important;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
+    nav ul li{
+        margin:0;
+    }
+
+    nav ul li a{
+        font-size:14px;
+    }
+
+   .logo {
+        font-size: 24px;
+        flex: none;       /* Take up only the space the text needs */
+        margin: 0;        /* Clear any old margins */
+    }
+
+    /* Hero */
+
+    .hero{
+        padding:120px 20px 80px;
+        text-align:center;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+        line-height:1.2;
+    }
+
+    .hero h3{
+        font-size:1.2rem;
+    }
+
+    .hero p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .btn{
+        width:100%;
+        max-width:250px;
+        text-align:center;
+    }
+
+    /* Section */
+
+    section{
+        padding:70px 20px;
+    }
+
+    .title{
+        font-size:2rem;
+        margin-bottom:30px;
+    }
+
+    /* Skills */
+
+    .skills-container{
+        grid-template-columns:1fr;
+    }
+
+    .skill{
+        width:100%;
+    }
+
+    /* Education */
+
+    .education-container{
+        grid-template-columns:1fr;
+    }
+
+    .education-card{
+        width:100%;
+    }
+
+    /* Projects */
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .project-card{
+        width:100%;
+    }
+
+    .project-card img{
+        height:180px;
+    }
+
+    /* Project Buttons */
+
+    .project-links{
+        flex-direction:column;
+    }
+
+    .project-links a{
+        width:100%;
+        text-align:center;
+    }
+
+    /* Contact */
+
+    .contact{
+        padding:0 10px;
+    }
+
+    .contact p{
+        word-break:break-word;
+        font-size:14px;
+    }
+
+    /* Floating circles */
+
+    .circle1,
+    .circle2{
+        display:none;
+    }
+
+    /* Footer */
+
+    footer{
+        font-size:14px;
+        padding:15px;
+    }
+}
+
+/* Small Phones */
+
+@media screen and (max-width:480px){
+
+    .hero h1{
+        font-size:1.8rem;
+    }
+
+    .hero h3{
+        font-size:1rem;
+    }
+
+    .title{
+        font-size:1.8rem;
+    }
+
+    .education-card,
+    .project-card,
+    .skill{
+        padding:20px;
+    }
+}
+@media(max-width:768px){
+
+.menu-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        flex: none;       /* Take up only the space the icon needs */
+        margin: 0;        /* Clear any old margins */
+    }
+
+nav ul {
+        display: none !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0f172a;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        gap: 12px;
+    }
+
+nav ul.active{
+    display:flex !important;
+}
+
+}
 </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">Neha N</div>
-
-    <ul>
+     <div class="menu-toggle">&#9776;</div>
+    <ul id="menu">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -720,7 +928,7 @@ nav{
     </ul>
 </nav>
 
-<body>
+
 
 <div id="progress-bar"></div>
 
@@ -1030,7 +1238,17 @@ document.querySelector('.circle2')
 `translate(${-x*20}px,${-y*20}px)`;
 
 });
+const menuToggle =
+document.querySelector(".menu-toggle");
 
+const menu =
+document.querySelector("#menu");
+
+menuToggle.addEventListener("click",()=>{
+
+menu.classList.toggle("active");
+
+});
 </script>
 </body>
 </html>
