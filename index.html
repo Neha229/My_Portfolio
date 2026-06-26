@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neha N | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#111b34;
+    color:white;
+}
+
+/* Navbar */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,23,42,0.95);
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#38bdf8;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:100px 10%;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:60px;
+    animation:slideUp 1s ease;
+}
+
+.hero h1 span{
+    color:#38bdf8;
+}
+
+.hero h3{
+    margin-top:10px;
+    font-size:28px;
+    color:#94a3b8;
+}
+
+.hero p{
+    margin-top:20px;
+    line-height:1.8;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 30px;
+    background:#38bdf8;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* Floating Animation */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:#38bdf8;
+    opacity:0.2;
+    animation:float 6s infinite ease-in-out;
+}
+
+.circle1{
+    width:120px;
+    height:120px;
+    top:120px;
+    right:10%;
+}
+
+.circle2{
+    width:70px;
+    height:70px;
+    bottom:120px;
+    left:10%;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+/* Sections */
+
+section{
+    padding:100px 10%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:40px;
+    color:#38bdf8;
+}
+
+/* Skills */
+
+.skills-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:#1e293b;
+    padding:25px;
+    text-align:center;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.skill:hover{
+    transform:translateY(-10px);
+}
+
+/* Projects */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.project-card:hover{
+    transform:scale(1.05);
+}
+
+/* Contact */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    margin:15px 0;
+}
+.project-card{
+    background:#1e293b;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.project-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.project-card h3{
+    padding:15px;
+}
+
+.project-card p{
+    padding:0 15px 15px;
+    line-height:1.6;
+}
+
+.project-links{
+    display:flex;
+    gap:10px;
+    padding:15px;
+}
+
+.project-links a{
+    text-decoration:none;
+    background:#38bdf8;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+}
+.education-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.education-card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    transition:0.4s;
+    border-left:5px solid #38bdf8;
+}
+
+.education-card:hover{
+    transform:translateY(-8px);
+}
+
+.education-card h3{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+.education-card h4{
+    color:#cbd5e1;
+    margin-bottom:15px;
+}
+
+.education-card p{
+    margin:8px 0;
+    color:#e2e8f0;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+}
+/* ==========================
+   PREMIUM ANIMATIONS
+========================== */
+
+.fade-section{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 1s ease;
+}
+
+.fade-section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Hero Text Animation */
+
+.hero-content h1{
+    animation:slideLeft 1s ease;
+}
+
+.hero-content h3{
+    animation:slideRight 1.2s ease;
+}
+
+.hero-content p{
+    animation:fadeIn 1.5s ease;
+}
+
+.hero-content .btn{
+    animation:zoomIn 1.8s ease;
+}
+
+/* Navbar */
+
+nav{
+    animation:navDrop 1s ease;
+}
+
+/* Glowing Cards */
+
+.skill,
+.project-card,
+.education-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.skill::before,
+.project-card::before,
+.education-card::before{
+    content:'';
+    position:absolute;
+    top:-100%;
+    left:-100%;
+    width:250%;
+    height:250%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(56,189,248,0.25),
+        transparent
+    );
+    transform:rotate(25deg);
+    transition:.8s;
+}
+
+.skill:hover::before,
+.project-card:hover::before,
+.education-card:hover::before{
+    top:100%;
+    left:100%;
+}
+
+/* Floating Skills */
+
+.skill:nth-child(odd){
+    animation:floating 5s infinite ease-in-out;
+}
+
+.skill:nth-child(even){
+    animation:floating 6s infinite ease-in-out;
+}
+
+/* Pulse Button */
+
+.btn{
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow:0 0 0 0 rgba(56,189,248,.7);
+    }
+    70%{
+        box-shadow:0 0 0 20px rgba(56,189,248,0);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(56,189,248,0);
+    }
+}
+
+/* Typing Cursor */
+
+.hero h3::after{
+    content:"|";
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* Keyframes */
+
+@keyframes slideLeft{
+    from{
+        opacity:0;
+        transform:translateX(-80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes slideRight{
+    from{
+        opacity:0;
+        transform:translateX(80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        opacity:0;
+        transform:scale(.6);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes navDrop{
+    from{
+        opacity:0;
+        transform:translateY(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floating{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:40px;
+    }
+
+    nav ul{
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Neha N</div>
+
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+
+<section class="hero" id="about">
+    <div class="hero-content">
+        <h1>Hello, I'm <span>Neha N</span></h1>
+        <h3>Full Stack Developer | AI/ML Enthusiast</h3>
+
+        <p>
+            MCA Graduate passionate about Web Development, Artificial Intelligence,
+            Machine Learning, and Data Science. Experienced in building real-time
+            applications and intelligent systems through hands-on internship projects.
+        </p>
+
+        <a href="#projects" class="btn">View My Work</a>
+    </div>
+</section>
+<section id="education">
+    <h2 class="title">Education</h2>
+
+    <div class="education-container">
+
+        <div class="education-card">
+            <h3>Master of Computer Applications (MCA)</h3>
+            <h4>Artificial Intelligence & Machine Learning</h4>
+            <p><strong>Institution:</strong> Mangalore Institute of Technology and Engineering</p>
+            <p><strong>Duration:</strong> 2023 – 2025</p>
+            <p><strong>CGPA:</strong> 8.6/10</p>
+        </div>
+
+        <div class="education-card">
+            <h3>Bachelor of Vocation (B.Voc)</h3>
+            <h4>Software & Application Development</h4>
+            <p><strong>Institution:</strong> SDM Degree College, Ujire</p>
+            <p><strong>Duration:</strong> 2020 – 2023</p>
+            <p><strong>CGPA:</strong> 9.2/10</p>
+        </div>
+
+    </div>
+</section>
+<section id="skills">
+    <h2 class="title">Skills</h2>
+
+    <div class="skills-container">
+        <div class="skill">Python</div>
+        <div class="skill">Java</div>
+        <div class="skill">Django</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">HTML/CSS</div>
+        <div class="skill">C/C++</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">SQL</div>
+        <div class="skill">PHP</div>
+        <div class="skill">DevOps/Cloud</div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="title">Projects</h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <h3>Brain Tumor Detection using NSEDAN</h3>
+            <p>
+                Developed an intelligent MRI-based brain tumor detection
+                system using Neuro-Inspired Self-Evolving Dual-Attention Network.
+            </p>
+             <div class="project-links">
+       
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Paddy Leaf Disease Detection</h3>
+            <p>
+                AI-powered disease classification system for detecting
+                Brown Spot, Leaf Smut and Bacterial Leaf Blight.
+            </p>
+             <div class="project-links">
+       
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Full Stack Web Applications</h3>
+            <p>
+                Built responsive web applications during internship using
+                HTML, CSS, JavaScript, Python and Django.
+            </p>
+             <div class="project-links">
+       
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+        </div>
+         <div class="project-card">
+    <h3>Hepatitis Disease Prediction System</h3>
+    <p>
+        Developed a machine learning-based disease prediction system using
+        medical datasets. Cleaned and standardized healthcare data,
+        improving model reliability by 20%, and built a web-based
+        diagnostic interface for end-to-end disease prediction.
+    </p>
+     <div class="project-links">
+       
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+</div>
+
+<div class="project-card">
+    <h3>Blood Bank Management System</h3>
+    <p>
+        Designed and developed a database-driven management system for
+        blood banks. Optimized SQL queries to reduce data retrieval time
+        by 35% and automated donor-recipient matching, reducing manual
+        processing effort by 40%.
+    </p>
+     <div class="project-links">
+       
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+</div>
+
+<div class="project-card">
+    <h3>Zoyera – Service Booking & Management System</h3>
+    <p>
+        Developed a service booking and management platform with a
+        responsive user interface. Improved operational workflow,
+        streamlined information retrieval for staff, and enhanced the
+        overall user experience through efficient service management.
+    </p>
+     <div class="project-links">
+       
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+</div>
+    </div>
+</section>
+<section id="projects">
+    <h2 class="title">Real-Time Projects</h2>
+
+    <div class="projects">
+
+       <div class="project-card">
+    <img src="images/rpinfocare.png" alt="RP Infocare Website">
+
+    <h3>RP Infocare Corporate Website</h3>
+
+    <p>
+        Developed and maintained a professional corporate website during
+        my Full Stack Web Development internship, focusing on responsive
+        design, optimization, and deployment.
+    </p>
+
+    <div class="project-links">
+        <a href="https://neha229.github.io/RPINFOCARE/" target="_blank">Live Demo</a>
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+</div>
+
+        
+
+        <div class="project-card">
+             <img src="images/cmbc.png" alt="CBBC Advisory Website">
+            <h3>CBBC Advisory Website</h3>
+            <p>
+                Designed and developed business-oriented web pages for CBBC
+                Advisory with a focus on modern UI/UX, responsive layouts,
+                performance optimization, and seamless user experience.
+            </p>
+            <div class="project-links">
+            <a href="https://cm-bc.com/" target="_blank">Live Demo</a>
+             <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+             <img src="images/regi.png" alt="Regiflo Website">
+            <h3>Regiflo Website</h3>
+            <p>
+                Contributed to the development of the Regiflo platform,
+                implementing frontend components, responsive design,
+                interactive features, and website enhancements for better
+                user engagement.
+            </p>
+            <div class="project-links">
+        <a href="https://neha229.github.io/RegiFlo/" target="_blank">Live Demo</a>
+        <a href="https://github.com/Neha229" target="_blank">GitHub</a>
+    </div>
+        </div>
+
+       
+
+    </div>
+</section>
+<section id="contact">
+    <h2 class="title">Contact Me</h2>
+
+    <div class="contact">
+        <p>📱 Phone: +91 8088408829</p>
+        <p>📧 nneha5363@gmail.com</p>
+        <p>💼 LinkedIn: https://www.linkedin.com/in/neha-n-b5505b233</p>
+        <p>💻 GitHub: https://github.com/Neha229</p>
+
+        <a href="https://drive.google.com/file/d/1AxcOYAfunZLY9y46ugaPfRnaAUXacxi-/view?usp=drive_link" class="btn">Download Resume</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Neha N | Portfolio Website</p>
+</footer>
+<script>
+
+// Scroll Reveal Animation
+
+const sections = document.querySelectorAll(
+'.education-card,.skill,.project-card,.title,.contact'
+);
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{
+    threshold:0.15
+});
+
+sections.forEach(sec=>{
+    sec.classList.add('fade-section');
+    observer.observe(sec);
+});
+
+
+// Parallax Floating Circles
+
+window.addEventListener('mousemove',(e)=>{
+
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+
+    document.querySelector('.circle1').style.transform =
+    `translate(${x*30}px,${y*30}px)`;
+
+    document.querySelector('.circle2').style.transform =
+    `translate(${-x*25}px,${-y*25}px)`;
+});
+
+</script>
+</body>
+</html>
